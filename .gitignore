@@ -22,3 +22,9 @@
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
 replay_pid*
+
+# Ignore local application configuration files
+# Ignore any application.properties anywhere (e.g., backend resources)
+**/application.properties
+/backend/src/main/resources/application.properties
+/backend/target/classes/application.properties
