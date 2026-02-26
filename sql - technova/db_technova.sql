@@ -20,7 +20,7 @@ CREATE TABLE producto (
   descripcion TEXT,
   precio DECIMAL(10,2) NOT NULL CHECK (precio >= 0),
   stock INT NOT NULL CHECK (stock >= 0),
-  categoria ENUM('Auriculares','Pantallas','Relojes','Moviles') NOT NULL,
+  categoria ENUM('Perifericos','Componentes','Software','Redes') NOT NULL,
   imagen VARCHAR(255)
 );
 
