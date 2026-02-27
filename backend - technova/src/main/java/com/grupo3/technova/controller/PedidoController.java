@@ -98,7 +98,7 @@ public class PedidoController {
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(json.toString());
         } catch (Exception ex) {
-                        // Cualquier otro error inesperado — devolvemos 500 Internal Server Error.
+            // Cualquier otro error inesperado — devolvemos 500 Internal Server Error.
             // No enviamos el mensaje real del error al cliente por seguridad ya que podría revelar detalles internos del sistema.
             com.google.gson.JsonObject json = new com.google.gson.JsonObject();
             json.addProperty("status", "error");
