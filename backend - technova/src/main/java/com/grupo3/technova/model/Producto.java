@@ -4,7 +4,7 @@ import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 
 public class Producto implements Jsonable {
-        // Son privados para que nadie los modifique directamente desde fuera de la clase.
+    // Son privados para que nadie los modifique directamente desde fuera de la clase.
     private Long id_producto;
     private String sku;
     private String nombre;

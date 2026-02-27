@@ -2,7 +2,7 @@ package com.grupo3.technova.model;
 
 import com.google.gson.JsonObject;
 import java.math.BigDecimal;
-import java.sql.Timestamp;
+import java.sql.Timestamp; // tipo de Java para fechas que vienen de MySQL con hora incluida
 
 public class Pedido implements Jsonable {
     private Long id_pedido;
