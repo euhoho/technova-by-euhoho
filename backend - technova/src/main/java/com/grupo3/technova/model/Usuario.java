@@ -28,12 +28,12 @@ public class Usuario implements Jsonable {
     public void setRol(String rol) { this.rol = rol; }
 
     @Override
-public JsonObject toJsonObject() {
-    JsonObject json = new JsonObject();
-    json.addProperty("id_usuario", id_usuario);
-    json.addProperty("email", email);
-    json.addProperty("rol", rol);
-    // IMPORTANTE: NO incluir password
-    return json;
-}
+    public JsonObject toJsonObject() {
+        JsonObject json = new JsonObject();
+        json.addProperty("id_usuario", id_usuario);
+        json.addProperty("email", email);
+        json.addProperty("rol", rol);
+        // IMPORTANTE: NO incluir password
+        return json;
+    }
 }
