@@ -240,8 +240,6 @@ Consulta el archivo `LICENSE` para más información.
 
 ---
 
----
-
 <div align="center">
   <sub>
     <strong>TechNova</strong> — Aplicación web de tienda online · DAM/DAW 2025/2026  
