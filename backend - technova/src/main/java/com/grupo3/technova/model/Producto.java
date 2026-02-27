@@ -29,7 +29,7 @@ public class Producto implements Jsonable {
         this.imagen = imagen;
     }
 
-    // Getters — única forma de leer los atributos desde fuera de la clase
+    // Getters — para leer los atributos desde fuera de la clase
     public Long getId_producto() { return id_producto; }
     public String getSku() { return sku; }
     public String getNombre() { return nombre; }
