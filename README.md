@@ -41,29 +41,35 @@ src/
 └── main/
     └── java/com/grupo3/technova/
         ├── config/
-        │   └── CorsConfig.java          # Configuración CORS para el frontend
+        │   └── CorsConfig.java                  # Configuración CORS para el frontend
         ├── controller/
-        │   ├── ProductoController.java  # GET /api/productos
-        │   ├── UsuarioController.java   # POST /api/login, GET /api/usuarios
-        │   └── PedidoController.java   # GET /api/pedidos, POST /api/pedidos
+        │   ├── ProductoController.java           # GET /api/productos, POST /api/productos
+        │   ├── UsuarioController.java            # POST /api/login, GET /api/usuarios
+        │   └── PedidoController.java            # GET /api/pedidos, POST /api/pedidos
+        ├── dto/
+        │   ├── LoginRequest.java                 # DTO para POST /api/login
+        │   └── ProductoRequest.java              # DTO para POST /api/productos
         ├── model/
-        │   ├── Jsonable.java            # Interfaz de serialización JSON
+        │   ├── enums/
+        │   │   ├── EnumRol.java                  # CLIENTE, OFICINA, ADMINISTRADOR
+        │   │   └── EnumCategoria.java            # PERIFERICOS, COMPONENTES, REDES, SOFTWARE
+        │   ├── Jsonable.java                     # Interfaz de serialización JSON
         │   ├── Producto.java
         │   ├── Usuario.java
         │   └── Pedido.java
         └── repository/
-            ├── ProductoRepository.java  # Stored procedures: sp_productos_listar
-            ├── UsuarioRepository.java   # Login con PreparedStatement
-            └── PedidoRepository.java   # Transacciones con rollback automático
+            ├── ProductoRepository.java           # Stored procedures + guardarProducto()
+            ├── UsuarioRepository.java            # Login con BCrypt
+            └── PedidoRepository.java            # Transacciones con rollback automático
 
-SQL/
-├── technova.sql                         # Esquema + datos de prueba
-└── procedures_technova.sql              # Procedimientos almacenados
+sql/
+├── db_technova.sql                              # Esquema + datos de prueba
+└── procedures_technova.sql                      # Procedimientos almacenados
 ```
 
 ---
 
-## ENDPOINTS DE LA API
+## Endpoints de la API
 
 ### Productos
 
@@ -71,9 +77,24 @@ SQL/
 |---|---|---|
 | `GET` | `/api/productos` | Lista todos los productos |
 | `GET` | `/api/productos?categoria=PERIFERICOS` | Filtra por categoría |
+| `POST` | `/api/productos` | Crea un producto nuevo (solo ADMINISTRADOR) |
 
 **Categorías disponibles:** `PERIFERICOS`, `COMPONENTES`, `REDES`, `SOFTWARE`
 
+**Body para crear producto** (requiere cabecera `user-role: ADMINISTRADOR`):
+```json
+{
+  "sku": "PER-TEST01",
+  "nombre": "Nombre del producto",
+  "descripcion": "Descripción del producto",
+  "precio": 99.99,
+  "stock": 10,
+  "categoria": "PERIFERICOS",
+  "imagen": "imagen.jpg"
+}
+```
+
+---
 
 ### Usuarios
 
@@ -94,10 +115,13 @@ SQL/
 ```json
 {
   "status": "ok",
+  "id": 7,
+  "email": "javiervs@gmail.com",
   "rol": "CLIENTE"
 }
 ```
 
+---
 
 ### Pedidos
 
