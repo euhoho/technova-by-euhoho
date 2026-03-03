@@ -16,7 +16,7 @@
 
 TechNova es un **proyecto académico** que simula una tienda online de productos tecnológicos.
 
-Este repositorio contiene el **backend** de la aplicación: una API REST que gestiona productos, usuarios, pedidos e inventario.
+Este repositorio contiene el **backend** de la aplicación, que gestiona productos, usuarios, pedidos e inventario.
 
 El **frontend** está en desarrollo. El objetivo final es una tienda completamente funcional con panel de administración, sistema de pedidos en tiempo real y control de stock automatizado.
 
@@ -35,7 +35,7 @@ El **frontend** está en desarrollo. El objetivo final es una tienda completamen
 ---
 
 ## ESTRUCTURA
-##### *(actualizada en entrega 3)*
+##### *(actualizada en entrega 4)*
 ```
 src/
 └── main/
@@ -167,7 +167,7 @@ cd technova-backend
 
 Ejecuta en MySQL en este orden:
 ```
-1. technova.sql              → crea las tablas e inserta los datos de prueba
+1. db_technova.sql           → crea las tablas e inserta los datos de prueba
 2. procedures_technova.sql   → crea los procedimientos almacenados
 ```
 
@@ -229,7 +229,7 @@ La API estará disponible en `http://localhost:8080`
 #### Entregable 4 — Autenticación y Roles
 - [x] Hash de contraseñas (BCrypt)
 - [x] Protección de endpoints por rol
-- [x] JWT o sistema de sesión
+- [x] Autenticación por cabecera (preparado para JWT en entregables futuros)
 - [x] Evidencias de acceso por rol
 
 #### Entregable 5 — Frontend
