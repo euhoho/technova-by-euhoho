@@ -1,7 +1,8 @@
 package com.grupo3.technova.controller;
-    
+
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.grupo3.technova.dto.LoginRequest;
 import com.grupo3.technova.model.Usuario;
 import com.grupo3.technova.repository.UsuarioRepository;
 
@@ -10,16 +11,16 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Map;
 
 // @RestController le dice a Spring que esta clase atiende peticiones HTTP y que sus métodos devuelven datos directamente, no páginas HTML.
-// @RequestMapping("/api") significa que todas las rutas de esta clase
+// @RequestMapping("/api") significa que todas las rutas de esta clase empiezan por /api
 @RestController
 @RequestMapping("/api")
 public class UsuarioController {
 
     private final UsuarioRepository repository;
 
+    // Spring inyecta el repositorio automáticamente
     public UsuarioController(UsuarioRepository repository) {
         this.repository = repository;
     }
@@ -41,33 +42,30 @@ public class UsuarioController {
                 .body(array.toString());
     }
 
-    // POST /api/login — recibe email y password, devuelve ok o error 401
-    // @RequestBody hace que Spring lea el JSON del cuerpo de la petición y lo convierta automáticamente en un Map<String, String>.
-    // Ejemplo de JSON que llega: { "email": "x@x.com", "password": "1234" }
+    // POST /api/login — recibe email y password, devuelve ok con datos del usuario o 401
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestBody Map<String, String> body) {
-
-        String email = body.get("email");
-        String password = body.get("password");
+    public ResponseEntity<String> login(@RequestBody LoginRequest request) {
 
         // Aquí usamos el Optional que devuelve el repositorio.
         // .map() se ejecuta SI hay usuario (login correcto).
         // .orElseGet() se ejecuta si NO hay usuario (login incorrecto).
-        // Es como un if/else pero encadenado sobre el Optional.
-        return repository.findByEmailAndPassword(email, password)
+        return repository.findByEmailAndPassword(request.getEmail(), request.getPassword())
                 .map(u -> {
-                    // Usuario encontrado — devolvemos 200 con status ok y el rol
+                    // Login correcto — devolvemos 200 con id, email y rol como pide la guía del entregable 4
                     JsonObject json = new JsonObject();
                     json.addProperty("status", "ok");
-                    json.addProperty("rol", u.getRol());
+                    json.addProperty("id", u.getId_usuario());
+                    json.addProperty("email", u.getEmail());
+                    // .name() convierte el enum a String para el JSON
+                    json.addProperty("rol", u.getRol().name());
                     return ResponseEntity
                             .status(200)
                             .contentType(MediaType.APPLICATION_JSON)
                             .body(json.toString());
                 })
                 .orElseGet(() -> {
-                    // Usuario no encontrado — devolvemos 401 Unauthorized
-                    // 401 es el código HTTP estándar para credenciales incorrectas
+                    // Credenciales incorrectas — 401 Unauthorized
+                    // 401 significa "no sé quién eres" — credenciales incorrectas
                     JsonObject json = new JsonObject();
                     json.addProperty("status", "error");
                     json.addProperty("message", "Credenciales incorrectas");
