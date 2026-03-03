@@ -52,34 +52,33 @@ CREATE TABLE movimiento_inventario (
 );
 
 -- INSERTS --
-
 INSERT INTO usuario (email, password, rol) VALUES
-('anagarcia@technova.es', '12345a!!FDDV', 'OFICINA'),
-('saragonzalez@technova.es', 'asdjfj21!CC', 'OFICINA'),
-('alvaromartin@technova.es', 'vfjjdll?Vj1', 'ADMINISTRADOR'),
-('shaghyasghari@technova.es', 'bccvcc98!D7', 'ADMINISTRADOR'),
-('davidfraile@technova.es', 'mdkdjsjk3?R742', 'ADMINISTRADOR'),
-('rayantorres@technova.es', 'lfjgjbjd1!F3', 'ADMINISTRADOR'),
-('javiervs@gmail.com', 'uyuyuyuy124.S', 'CLIENTE'),
-('lorenzop@gmail.com', 'iuinkuhn987!A', 'CLIENTE'),
-('danie23@gmail.com', 'lnhhbhhA!34', 'CLIENTE'),
-('antoniosf@gmail.com', 'lnhsdkAhA!34', 'CLIENTE'),
-('maria837a@gmail.com', 'mcsjfwDS!55', 'CLIENTE'),
-('anitaflores69@gmail.com', 'dvjjdje%D2', 'CLIENTE');
+('anagarcia@technova.es',       '$2a$10$Haq0A8f1gN9gtVcgiBOpMeb3urd0S2QMNKc4juThJo5YuEOaLrkqa', 'OFICINA'),
+('saragonzalez@technova.es',    '$2a$10$KnDlzDBBOwRZdE8gks5Wr.RLYYwNWNniUu66yJdGaJ9nBRh.aAXLy', 'OFICINA'),
+('alvaromartin@technova.es',    '$2a$10$6TXnR9W0rIp1JjAa4u0yOe/frhe83hX0w6gTBf34GAnPhnzqpSS1S', 'ADMINISTRADOR'),
+('shaghyasghari@technova.es',   '$2a$10$BEpliBePPzwoWrbh8.s9sus5ujSet6jkiAZe.UCVGxWqQ/X6mLiKK', 'ADMINISTRADOR'),
+('davidfraile@technova.es',     '$2a$10$LTnlgV8ToTgZfMgB9YjNwOS6Q2.NpL85f9jbH10KZdHV/NggMIYk6', 'ADMINISTRADOR'),
+('rayantorres@technova.es',     '$2a$10$ra9PJy4gg1WHeax40XzIFe7eiMtyQ20k69ook.reKZKdBh/28S4cC', 'ADMINISTRADOR'),
+('javiervs@gmail.com',          '$2a$10$WO7nj2Iwfim1h8gzYGSKFOy7JofeenVvDAJcZFH1q.1/Ze5DHzG2K', 'CLIENTE'),
+('lorenzop@gmail.com',          '$2a$10$uzTlKYxmgvPe1mM/xllhEeFUqPsLFfaD5A1cjpL1v1KeQNn8fteyO', 'CLIENTE'),
+('danie23@gmail.com',           '$2a$10$THYYj8PG21JpJg/N6uGMXuqef03lndnUSOZhQ7BT6Je0wsLKsmw9G', 'CLIENTE'),
+('antoniosf@gmail.com',         '$2a$10$lb2XRD7vIxNh4Ibto1.Ea.CMTBekBlSHoLEZlzSyBXogAkBDIPmFa', 'CLIENTE'),
+('maria837a@gmail.com',         '$2a$10$farciJ66LVexpDv/nzugQuzLZQ5AMkPHBGX3XYwy97FwfSJ2qxVfC', 'CLIENTE'),
+('anitaflores69@gmail.com',     '$2a$10$eJKMFtHnlK3DUx83eU/zHe.RRMqqupt6Tl8pSZ6ZsPOsmM8jwynMO', 'CLIENTE');
 
 INSERT INTO producto (sku, nombre, descripcion, precio, stock, categoria, imagen) VALUES
-('PER-MG5', 'Monitor Samsung Odyssey G5', 'Monitor curvo, 165Hz, 32 pulgadas', 199.99, 30, 'PERIFERICOS', 'MonitorSamsungOdysseyG5.jpg'),
-('PER-TNEWSKILL', 'Teclado NewSkil Pyro pro', 'Teclado mecanico, 65%, inalambrico', 75.00, 100, 'PERIFERICOS', 'TecladoNewSkilPyropro.jpg'),
-('PER-RLOGITECH', 'Logitech G G102 LightSync', 'Raton Gaming 8000 DPI', 17.90, 10, 'PERIFERICOS', 'LogitechGG102LightSync.jpg'),
-('COM-MCORSAIR', 'Memoria Ram Corsair Vengeance', '2x16GB DDR5 6000MHz', 600.99, 9, 'COMPONENTES', 'MemoriaRamCorsairVengeance.jpg'),
-('COM-RTX', 'MSI GeForce RTX 5070 Ti VENTUS', '3X OC 16GB GDDR7 Reflex 2 RTX AI DLSS4', 1400.90, 90, 'COMPONENTES', 'MSIGeForceRTX5070TiVENTUS.jpg'),
-('COM-MP600', 'Corsair MP600 GS 1TB M.2 Gen4', 'Velocidad lectura secuencial hasta 4800 MB/s', 112.22, 78, 'COMPONENTES', 'CorsairMP600GS1TBM2Gen4.jpg'),
-('SOF-WINDOWS', 'Windows 11 Pro', 'Licencia OEM 64 bits Espanol', 200.99, 3, 'SOFTWARE', 'Windows11Pro.jpg'),
-('SOF-KASPERSKY', 'Kaspersky Pro', 'Licencia AntiVirus Kaspersky 1 anio', 29.95, 3, 'SOFTWARE', 'KasperskyPro.jpg'),
-('SOF-OFFICE', 'Microsoft Office Professional Plus', 'Descarga digital Microsoft Office Professional Plus', 149.99, 3, 'SOFTWARE', 'MicrosoftOfficeProfessionalPlus.jpg'),
-('RED-DLINK', 'Modem D-Link F518/M 5G', 'Wi-Fi 6 dual band hasta 1800 Mbps', 295.87, 3, 'REDES', 'ModemDLinkF518M5G.jpg'),
-('RED-USB', 'TP-Link UB5A', 'Adaptador Nano USB Bluetooth 5.0', 9.99, 1, 'REDES', 'TPLinkUB5A.jpg'),
-('RED-TARJETA', 'ASUS PCE-AXE5400', 'Tarjeta de Red WiFi AXE5400 con Bluetooth', 32.95, 4, 'REDES', 'ASUSPCEAXE5400.jpg');
+('PER-MG5',       'Monitor Samsung Odyssey G5',         'Monitor curvo, 165Hz, 32 pulgadas',                    199.99, 30, 'PERIFERICOS', 'MonitorSamsungOdysseyG5.jpg'),
+('PER-TNEWSKILL', 'Teclado NewSkil Pyro pro',           'Teclado mecanico, 65%, inalambrico',                   75.00, 100, 'PERIFERICOS', 'TecladoNewSkilPyropro.jpg'),
+('PER-RLOGITECH', 'Logitech G G102 LightSync',          'Raton Gaming 8000 DPI',                                17.90,  10, 'PERIFERICOS', 'LogitechGG102LightSync.jpg'),
+('COM-MCORSAIR',  'Memoria Ram Corsair Vengeance',       '2x16GB DDR5 6000MHz',                                 600.99,   9, 'COMPONENTES', 'MemoriaRamCorsairVengeance.jpg'),
+('COM-RTX',       'MSI GeForce RTX 5070 Ti VENTUS',     '3X OC 16GB GDDR7 Reflex 2 RTX AI DLSS4',             1400.90,  90, 'COMPONENTES', 'MSIGeForceRTX5070TiVENTUS.jpg'),
+('COM-MP600',     'Corsair MP600 GS 1TB M.2 Gen4',      'Velocidad lectura secuencial hasta 4800 MB/s',         112.22,  78, 'COMPONENTES', 'CorsairMP600GS1TBM2Gen4.jpg'),
+('SOF-WINDOWS',   'Windows 11 Pro',                     'Licencia OEM 64 bits Espanol',                         200.99,   3, 'SOFTWARE',    'Windows11Pro.jpg'),
+('SOF-KASPERSKY', 'Kaspersky Pro',                      'Licencia AntiVirus Kaspersky 1 anio',                   29.95,   3, 'SOFTWARE',    'KasperskyPro.jpg'),
+('SOF-OFFICE',    'Microsoft Office Professional Plus', 'Descarga digital Microsoft Office Professional Plus',  149.99,   3, 'SOFTWARE',    'MicrosoftOfficeProfessionalPlus.jpg'),
+('RED-DLINK',     'Modem D-Link F518/M 5G',             'Wi-Fi 6 dual band hasta 1800 Mbps',                    295.87,   3, 'REDES',       'ModemDLinkF518M5G.jpg'),
+('RED-USB',       'TP-Link UB5A',                       'Adaptador Nano USB Bluetooth 5.0',                       9.99,   1, 'REDES',       'TPLinkUB5A.jpg'),
+('RED-TARJETA',   'ASUS PCE-AXE5400',                   'Tarjeta de Red WiFi AXE5400 con Bluetooth',             32.95,   4, 'REDES',       'ASUSPCEAXE5400.jpg');
 
 -- totales calculados desde las lineas:
 -- pedido 1: 17.90 + 75.00 + 199.99 = 292.89
