@@ -203,10 +203,10 @@ La API estará disponible en `http://localhost:8080`
 - [x] Respuestas JSON
 
 #### Entregable 4 — Autenticación y Roles
-- [ ] Hash de contraseñas (BCrypt)
-- [ ] Protección de endpoints por rol
-- [ ] JWT o sistema de sesión
-- [ ] Evidencias de acceso por rol
+- [x] Hash de contraseñas (BCrypt)
+- [x] Protección de endpoints por rol
+- [x] JWT o sistema de sesión
+- [x] Evidencias de acceso por rol
 
 #### Entregable 5 — Frontend
 - [ ] Frontend HTML/CSS/JS consumiendo la API
