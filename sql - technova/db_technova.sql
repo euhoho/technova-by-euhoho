@@ -65,7 +65,7 @@ INSERT INTO usuario (email, nombre, password, rol) VALUES
 ('danie23@gmail.com',           'Daniel Sánchez',      '$2a$10$THYYj8PG21JpJg/N6uGMXuqef03lndnUSOZhQ7BT6Je0wsLKsmw9G', 'CLIENTE'),
 ('antoniosf@gmail.com',         'Antonio Fernández',   '$2a$10$lb2XRD7vIxNh4Ibto1.Ea.CMTBekBlSHoLEZlzSyBXogAkBDIPmFa', 'CLIENTE'),
 ('maria837a@gmail.com',         'María Rodríguez',     '$2a$10$farciJ66LVexpDv/nzugQuzLZQ5AMkPHBGX3XYwy97FwfSJ2qxVfC', 'CLIENTE'),
-('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$eJKMFtHnlK3DUx83eU/zHe.RRMqqupt6Tl8pSZ6ZsPOsmM8jwynMO', 'CLIENTE');
+('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$eJKMFtHnlK3DUx83eU/zHe.RRMqqupt6Tl8pSZ6ZsPOsmM8jwynMO', 'CLIENTE');d
 
 INSERT INTO producto (sku, nombre, descripcion, precio, stock, categoria, imagen) VALUES
 ('PER-MG5',       'Monitor Samsung Odyssey G5',         'Monitor curvo, 165Hz, 32 pulgadas',                    199.99, 30, 'PERIFERICOS', 'MonitorSamsungOdysseyG5.jpg'),
