@@ -178,13 +178,15 @@ public class PedidoRepository {
                 // Restauramos el autocommit
             }
 
-        } catch (SQLException e) {
-        // Errores específicos de MySQL identificados por su código numérico
-        if (e.getErrorCode() == 1452) {
-            throw new IllegalArgumentException("Usuario o producto no existe (FK).");
-        }
-        if (e.getErrorCode() == 1062) {
-            throw new IllegalArgumentException("Datos duplicados.");
+            } catch (SQLException e) {
+            // Errores específicos de MySQL identificados por su código numérico
+            if (e.getErrorCode() == 1452) {
+                throw new IllegalArgumentException("Usuario o producto no existe (FK).");
+            }
+            if (e.getErrorCode() == 1062) {
+                throw new IllegalArgumentException("Datos duplicados.");
+            }
+            throw new RuntimeException("Error creando pedido", e);
         }
     }
 }
