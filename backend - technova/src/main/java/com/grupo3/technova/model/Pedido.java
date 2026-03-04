@@ -1,5 +1,5 @@
 package com.grupo3.technova.model;
-
+import com.grupo3.technova.model.enums.EnumRol;
 import com.google.gson.JsonObject;
 import java.math.BigDecimal;
 import java.sql.Timestamp; // tipo de Java para fechas que vienen de MySQL con hora incluida
@@ -14,10 +14,10 @@ public class Pedido implements Jsonable {
      // Datos del usuario asociado — vienen del JOIN con la tabla usuario. Solo los campos que necesitamos mostrar
     private Long id_usuario;
     private String email;
-    private String rol;
+    private EnumRol rol;
 
     // Solo tiene constructor completo — un pedido siempre necesita todos sus datos
-    public Pedido(Long id_pedido, Timestamp fecha, BigDecimal total_pedido, String pedido_estado, Long id_usuario, String email, String rol) {
+    public Pedido(Long id_pedido, Timestamp fecha, BigDecimal total_pedido, String pedido_estado, Long id_usuario, String email, EnumRol rol) {
         this.id_pedido = id_pedido;
         this.fecha = fecha;
         this.total_pedido = total_pedido;
@@ -41,7 +41,7 @@ public class Pedido implements Jsonable {
         JsonObject usuario = new JsonObject();
         usuario.addProperty("id_usuario", id_usuario);
         usuario.addProperty("email", email);
-        usuario.addProperty("rol", rol);
+        usuario.addProperty("rol", rol != null ? rol.name() : null);
         // json.add en vez de json.addProperty porque estamos metiendo un objeto dentro de otro objeto, no un valor simple
         json.add("usuario", usuario);
         return json;
