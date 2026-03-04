@@ -6,7 +6,8 @@ import com.grupo3.technova.repository.PedidoRepository;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
+import com.grupo3.technova.dto.PedidoRequest;
+import com.google.gson.JsonObject;
 import java.sql.Date;
 import java.util.List;
 
@@ -62,24 +63,14 @@ public class PedidoController {
     //   ]
     // }
     @PostMapping("/pedidos")
-    public ResponseEntity<String> crear(@RequestBody java.util.Map<String, Object> body) {
+    public ResponseEntity<String> crear(@RequestBody PedidoRequest request) {
         try {
-            // Extraemos id_usuario del body. viene como Number porque el JSON no distingue entre Integer y Long
-            Number idUsuarioN = (Number) body.get("id_usuario");
-            if (idUsuarioN == null) throw new IllegalArgumentException("Falta id_usuario");
+            if (request.getId_usuario() == null) throw new IllegalArgumentException("Falta id_usuario");
+            if (request.getItems() == null || request.getItems().isEmpty()) throw new IllegalArgumentException("El pedido debe tener items");
 
-            // @SuppressWarnings: para quitar avisos amarillos del ide
-            @SuppressWarnings("unchecked")
-            java.util.List<java.util.Map<String, Object>> items =
-                    (java.util.List<java.util.Map<String, Object>>) body.get("items");
+            long idPedido = repo.crearPedidoYDescontarStock(request.getId_usuario(), request.getItems());
 
-            if (items == null || items.isEmpty()) throw new IllegalArgumentException("El pedido debe tener items");
-
-            // Delegamos toda la lógica al repositorio. El repositorio se encargará de crear el pedido, crear las líneas de pedido y descontar el stock, todo dentro de una transacción.
-            long idPedido = repo.crearPedidoYDescontarStock(idUsuarioN.longValue(), items);
-
-            // Pedido creado correctamente — devolvemos el id generado
-            com.google.gson.JsonObject json = new com.google.gson.JsonObject();
+            JsonObject json = new JsonObject();
             json.addProperty("status", "ok");
             json.addProperty("id_pedido", idPedido);
 
@@ -88,19 +79,14 @@ public class PedidoController {
                     .body(json.toString());
 
         } catch (IllegalArgumentException ex) {
-            // Errores de validación que lanzamos nosotros mismos:
-            // stock insuficiente, producto no existe, falta id_usuario, etc.
-            // Devolvemos 400 Bad Request — el cliente envió datos incorrectos.
-            com.google.gson.JsonObject json = new com.google.gson.JsonObject();
+            JsonObject json = new JsonObject();
             json.addProperty("status", "error");
             json.addProperty("message", ex.getMessage());
             return ResponseEntity.status(400)
                     .contentType(MediaType.APPLICATION_JSON)
                     .body(json.toString());
         } catch (Exception ex) {
-            // Cualquier otro error inesperado — devolvemos 500 Internal Server Error.
-            // No enviamos el mensaje real del error al cliente por seguridad ya que podría revelar detalles internos del sistema.
-            com.google.gson.JsonObject json = new com.google.gson.JsonObject();
+            JsonObject json = new JsonObject();
             json.addProperty("status", "error");
             json.addProperty("message", "Error interno");
             return ResponseEntity.status(500)
