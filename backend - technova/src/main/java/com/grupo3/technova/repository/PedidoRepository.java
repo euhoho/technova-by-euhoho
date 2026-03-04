@@ -1,6 +1,8 @@
 package com.grupo3.technova.repository;
 
 import com.grupo3.technova.model.Pedido;
+import com.grupo3.technova.model.enums.EnumRol;
+
 import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
@@ -48,7 +50,7 @@ public class PedidoRepository {
                             // estos tres vienen del JOIN con usuario que tiene el procedimiento almacenado
                             rs.getLong("id_usuario"),
                             rs.getString("email"),
-                            rs.getString("rol")
+                            EnumRol.valueOf(rs.getString("rol"))
                     ));
                 }
                 return out;
@@ -184,7 +186,5 @@ public class PedidoRepository {
         if (e.getErrorCode() == 1062) {
             throw new IllegalArgumentException("Datos duplicados.");
         }
-        throw new RuntimeException("Error creando pedido", e);
-    }
     }
 }
