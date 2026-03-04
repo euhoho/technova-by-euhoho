@@ -32,7 +32,7 @@ public class UsuarioRepository {
     // Ya no buscamos por password en la BD — primero buscamos por email, luego comparamos la password enviada con el hash guardado en Java.
     public Optional<Usuario> findByEmailAndPassword(String email, String password) {
 
-        String sql = "SELECT id_usuario, email, password, rol FROM usuario WHERE email = ?";
+        String sql = "SELECT id_usuario, email, nombre, password, rol FROM usuario WHERE email = ?";
 
         try (Connection con = dataSource.getConnection();
              PreparedStatement ps = con.prepareStatement(sql)) {
@@ -53,6 +53,7 @@ public class UsuarioRepository {
                     Usuario u = new Usuario(
                             rs.getLong("id_usuario"),
                             rs.getString("email"),
+                            rs.getString("nombre"),
                             rs.getString("password"),
                             // EnumRol.valueOf() convierte el String de la BD al enum correspondiente
                             EnumRol.valueOf(rs.getString("rol"))
@@ -70,7 +71,7 @@ public class UsuarioRepository {
 
     // Devuelve todos los usuarios. Se usa en GET /api/usuarios.
     public List<Usuario> findAll() {
-        String sql = "SELECT id_usuario, email, password, rol FROM usuario";
+        String sql = "SELECT id_usuario, email, nombre, password, rol FROM usuario WHERE email = ?";
 
         List<Usuario> usuarios = new ArrayList<>();
 
@@ -82,6 +83,7 @@ public class UsuarioRepository {
                 usuarios.add(new Usuario(
                         rs.getLong("id_usuario"),
                         rs.getString("email"),
+                        rs.getString("nombre"),
                         rs.getString("password"),
                         // EnumRol.valueOf() convierte el String de la BD al enum correspondiente
                         EnumRol.valueOf(rs.getString("rol"))

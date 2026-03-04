@@ -55,7 +55,7 @@ public class UsuarioController {
                     JsonObject json = new JsonObject();
                     json.addProperty("status", "ok");
                     json.addProperty("id", u.getId_usuario());
-                    json.addProperty("email", u.getEmail());
+                    json.addProperty("nombre", u.getNombre());
                     // .name() convierte el enum a String para el JSON
                     json.addProperty("rol", u.getRol().name());
                     return ResponseEntity
