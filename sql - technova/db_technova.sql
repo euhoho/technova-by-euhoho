@@ -54,18 +54,18 @@ CREATE TABLE movimiento_inventario (
 
 -- INSERTS --
 INSERT INTO usuario (email, nombre, password, rol) VALUES
-('anagarcia@technova.es',       'Ana García',          '$2a$10$Haq0A8f1gN9gtVcgiBOpMeb3urd0S2QMNKc4juThJo5YuEOaLrkqa', 'OFICINA'),
-('saragonzalez@technova.es',    'Sara González',       '$2a$10$KnDlzDBBOwRZdE8gks5Wr.RLYYwNWNniUu66yJdGaJ9nBRh.aAXLy', 'OFICINA'),
-('alvaromartin@technova.es',    'Álvaro Martín',       '$2a$10$6TXnR9W0rIp1JjAa4u0yOe/frhe83hX0w6gTBf34GAnPhnzqpSS1S', 'ADMINISTRADOR'),
-('shaghyasghari@technova.es',   'Shagh Yasghari',      '$2a$10$BEpliBePPzwoWrbh8.s9sus5ujSet6jkiAZe.UCVGxWqQ/X6mLiKK', 'ADMINISTRADOR'),
-('davidfraile@technova.es',     'David Fraile',        '$2a$10$LTnlgV8ToTgZfMgB9YjNwOS6Q2.NpL85f9jbH10KZdHV/NggMIYk6', 'ADMINISTRADOR'),
-('rayantorres@technova.es',     'Rayan Torres',        '$2a$10$ra9PJy4gg1WHeax40XzIFe7eiMtyQ20k69ook.reKZKdBh/28S4cC', 'ADMINISTRADOR'),
-('javiervs@gmail.com',          'Javier Villanueva',   '$2a$10$WO7nj2Iwfim1h8gzYGSKFOy7JofeenVvDAJcZFH1q.1/Ze5DHzG2K', 'CLIENTE'),
-('lorenzop@gmail.com',          'Lorenzo Pérez',       '$2a$10$uzTlKYxmgvPe1mM/xllhEeFUqPsLFfaD5A1cjpL1v1KeQNn8fteyO', 'CLIENTE'),
-('danie23@gmail.com',           'Daniel Sánchez',      '$2a$10$THYYj8PG21JpJg/N6uGMXuqef03lndnUSOZhQ7BT6Je0wsLKsmw9G', 'CLIENTE'),
-('antoniosf@gmail.com',         'Antonio Fernández',   '$2a$10$lb2XRD7vIxNh4Ibto1.Ea.CMTBekBlSHoLEZlzSyBXogAkBDIPmFa', 'CLIENTE'),
-('maria837a@gmail.com',         'María Rodríguez',     '$2a$10$farciJ66LVexpDv/nzugQuzLZQ5AMkPHBGX3XYwy97FwfSJ2qxVfC', 'CLIENTE'),
-('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$eJKMFtHnlK3DUx83eU/zHe.RRMqqupt6Tl8pSZ6ZsPOsmM8jwynMO', 'CLIENTE');
+('anagarcia@technova.es',       'Ana García',          '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'OFICINA'),
+('saragonzalez@technova.es',    'Sara González',       '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'OFICINA'),
+('alvaromartin@technova.es',    'Álvaro Martín',       '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'ADMINISTRADOR'),
+('shaghyasghari@technova.es',   'Shagh Yasghari',      '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'ADMINISTRADOR'),
+('davidfraile@technova.es',     'David Fraile',        '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'ADMINISTRADOR'),
+('rayantorres@technova.es',     'Rayan Torres',        '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'ADMINISTRADOR'),
+('javiervs@gmail.com',          'Javier Villanueva',   '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE'),
+('lorenzop@gmail.com',          'Lorenzo Pérez',       '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE'),
+('danie23@gmail.com',           'Daniel Sánchez',      '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE'),
+('antoniosf@gmail.com',         'Antonio Fernández',   '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE'),
+('maria837a@gmail.com',         'María Rodríguez',     '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE'),
+('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE');
 
 INSERT INTO producto (sku, nombre, descripcion, precio, stock, categoria, imagen) VALUES
 ('PER-MG5',       'Monitor Samsung Odyssey G5',         'Monitor curvo, 165Hz, 32 pulgadas',                    199.99, 30, 'PERIFERICOS', 'MonitorSamsungOdysseyG5.jpg'),
