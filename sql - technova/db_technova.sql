@@ -19,7 +19,7 @@ CREATE TABLE producto (
     descripcion TEXT,
     precio DECIMAL(10,2) NOT NULL CHECK (precio >= 0),
     stock INT NOT NULL CHECK (stock >= 0),
-    categoria ENUM('COMPONENTES', 'PERIFERICOS', 'REDES', 'SOFTWARE') NOT NULL,
+    categoria ENUM('AURICULARES', 'PANTALLAS', 'RELOJES', 'MOVILES') NOT NULL,
     imagen VARCHAR(255)
 );
 
@@ -68,46 +68,41 @@ INSERT INTO usuario (email, nombre, password, rol) VALUES
 ('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE');
 
 INSERT INTO producto (sku, nombre, descripcion, precio, stock, categoria, imagen) VALUES
-('PER-MG5',       'Monitor Samsung Odyssey G5',         'Monitor curvo, 165Hz, 32 pulgadas',                    199.99, 30, 'PERIFERICOS', 'MonitorSamsungOdysseyG5.jpg'),
-('PER-TNEWSKILL', 'Teclado NewSkil Pyro pro',           'Teclado mecanico, 65%, inalambrico',                   75.00, 100, 'PERIFERICOS', 'TecladoNewSkilPyropro.jpg'),
-('PER-RLOGITECH', 'Logitech G G102 LightSync',          'Raton Gaming 8000 DPI',                                17.90,  10, 'PERIFERICOS', 'LogitechGG102LightSync.jpg'),
-('COM-MCORSAIR',  'Memoria Ram Corsair Vengeance',       '2x16GB DDR5 6000MHz',                                 600.99,   9, 'COMPONENTES', 'MemoriaRamCorsairVengeance.jpg'),
-('COM-RTX',       'MSI GeForce RTX 5070 Ti VENTUS',     '3X OC 16GB GDDR7 Reflex 2 RTX AI DLSS4',             1400.90,  90, 'COMPONENTES', 'MSIGeForceRTX5070TiVENTUS.jpg'),
-('COM-MP600',     'Corsair MP600 GS 1TB M.2 Gen4',      'Velocidad lectura secuencial hasta 4800 MB/s',         112.22,  78, 'COMPONENTES', 'CorsairMP600GS1TBM2Gen4.jpg'),
-('SOF-WINDOWS',   'Windows 11 Pro',                     'Licencia OEM 64 bits Espanol',                         200.99,   3, 'SOFTWARE',    'Windows11Pro.jpg'),
-('SOF-KASPERSKY', 'Kaspersky Pro',                      'Licencia AntiVirus Kaspersky 1 anio',                   29.95,   3, 'SOFTWARE',    'KasperskyPro.jpg'),
-('SOF-OFFICE',    'Microsoft Office Professional Plus', 'Descarga digital Microsoft Office Professional Plus',  149.99,   3, 'SOFTWARE',    'MicrosoftOfficeProfessionalPlus.jpg'),
-('RED-DLINK',     'Modem D-Link F518/M 5G',             'Wi-Fi 6 dual band hasta 1800 Mbps',                    295.87,   3, 'REDES',       'ModemDLinkF518M5G.jpg'),
-('RED-USB',       'TP-Link UB5A',                       'Adaptador Nano USB Bluetooth 5.0',                       9.99,   1, 'REDES',       'TPLinkUB5A.jpg'),
-('RED-TARJETA',   'ASUS PCE-AXE5400',                   'Tarjeta de Red WiFi AXE5400 con Bluetooth',             32.95,   4, 'REDES',       'ASUSPCEAXE5400.jpg');
+('PAN-EDXG',   'Display XG',          'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.',         649.99, 20, 'PANTALLAS',   'DisplayXG.png'),
+('PAN-EDXE',   'Display XE',          'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.',            649.99, 15, 'PANTALLAS',   'DisplayXE.png'),
+('AUR-OR27N',  'Headphones or-27n',    'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.',   97.99, 50, 'AURICULARES', 'HeadphonesOR27N.png'),
+('AUR-W96C',   'Headphones w-96c',     'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.',              129.99, 40, 'AURICULARES', 'HeadphonesW96C.png'),
+('AUR-Z23C',   'Headphones z-23c',     'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.',            149.99, 35, 'AURICULARES', 'HeadphonesZ23C.png'),
+('MOV-P15B',   'Phone 15 Black',       'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.',              799.99, 25, 'MOVILES',     'Phone15Black.png'),
+('MOV-P15R',   'Phone 15 Red',         'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.',              799.99, 25, 'MOVILES',     'Phone15Red.png'),
+('REL-SF3B',   'Watch SF 3 Black',     'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.',    319.99, 30, 'RELOJES',     'WatchSF3Black.png'),
+('REL-SF4O',   'Watch SF 4 Orange',    'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.', 349.99, 20, 'RELOJES',     'WatchSF4Orange.png');
 
--- totales calculados desde las lineas:
--- pedido 1: 17.90 + 75.00 + 199.99 = 292.89
--- pedido 2: 295.87 + 75.00 + 17.90 = 388.77
--- pedido 3: 295.87
--- pedido 4: 17.90*2 + 75.00 = 110.80
+-- pedido 1: 97.99 + 129.99 + 799.99 = 1027.97
+-- pedido 2: 649.99 + 319.99 = 969.98
+-- pedido 3: 799.99
+-- pedido 4: 97.99*2 + 349.99 = 545.97
 
 INSERT INTO pedido (id_usuario, total_pedido, pedido_estado) VALUES
-(7, 292.89, 'ENVIADO'),
-(8, 388.77, 'CONFIRMADO'),
-(9, 295.87, 'ENTREGADO'),
-(11, 110.80, 'PREPARADO');
+(7,  1027.97, 'ENVIADO'),
+(8,   969.98, 'CONFIRMADO'),
+(9,   799.99, 'ENTREGADO'),
+(11,  545.97, 'PREPARADO');
 
 INSERT INTO linea_pedido (id_pedido, id_producto, cantidad, precio_unitario_momento) VALUES
 -- Pedido 1 - javiervs@gmail.com
-(1, 3, 1, 17.90),
-(1, 2, 1, 75.00),
-(1, 1, 1, 199.99),
+(1, 3, 1,  97.99),
+(1, 4, 1, 129.99),
+(1, 6, 1, 799.99),
 -- Pedido 2 - lorenzop@gmail.com
-(2, 10, 1, 295.87),
-(2, 2, 1, 75.00),
-(2, 3, 1, 17.90),
+(2, 1, 1, 649.99),
+(2, 8, 1, 319.99),
 -- Pedido 3 - danie23@gmail.com
-(3, 10, 1, 295.87),
+(3, 7, 1, 799.99),
 -- Pedido 4 - maria837a@gmail.com
-(4, 3, 2, 17.90),
-(4, 2, 1, 75.00);
+(4, 3, 2,  97.99),
+(4, 9, 1, 349.99);
 
 INSERT INTO movimiento_inventario (id_producto, tipo_movimiento, cantidad, motivo) VALUES
 (3, 'ENTRADA', 20, 'ALTA DE STOCK'),
-(2, 'SALIDA', 1, 'ARTICULO DEFECTUOSO');
+(4, 'SALIDA',   1, 'ARTICULO DEFECTUOSO');
