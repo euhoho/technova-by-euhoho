@@ -6,6 +6,7 @@
 ![Spring Boot](https://img.shields.io/badge/Spring_Boot-3.3.8-brightgreen?style=flat-square&logo=springboot)
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square&logo=mysql)
 ![Gson](https://img.shields.io/badge/Gson-2.10.1-yellow?style=flat-square)
+![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=flat-square&logo=bootstrap)
 ![Estado](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=flat-square)
 
 </div>
@@ -16,9 +17,9 @@
 
 TechNova es un **proyecto académico** que simula una tienda online de productos tecnológicos.
 
-Este repositorio contiene el **backend** de la aplicación, que gestiona productos, usuarios, pedidos e inventario.
+Este repositorio contiene tanto el **backend** como el **frontend** de la aplicación, que gestiona productos, usuarios, pedidos e inventario.
 
-El **frontend** está en desarrollo. El objetivo final es una tienda completamente funcional con panel de administración, sistema de pedidos en tiempo real y control de stock automatizado.
+El objetivo final es una tienda completamente funcional con panel de administración, sistema de pedidos en tiempo real y control de stock automatizado.
 
 ---
 
@@ -26,45 +27,66 @@ El **frontend** está en desarrollo. El objetivo final es una tienda completamen
 
 | Capa | Tecnología |
 |---|---|
-| Lenguaje | Java 21 |
-| Framework | Spring Boot 3.3.8 |
+| Lenguaje backend | Java 21 |
+| Framework backend | Spring Boot 3.3.8 |
 | Base de datos | MySQL 8.0 |
 | Serialización JSON | Gson 2.10.1 |
 | Gestión de dependencias | Maven |
+| Frontend | HTML5 + Bootstrap 5.3 + Vanilla JS |
 
 ---
 
 ## ESTRUCTURA
-##### *(actualizada en entrega 4)*
+##### *(actualizada en entrega 5)*
 ```
-src/
-└── main/
-    └── java/com/grupo3/technova/
-        ├── config/
-        │   └── CorsConfig.java                  # Configuración CORS para el frontend
-        ├── controller/
-        │   ├── ProductoController.java           # GET /api/productos, POST /api/productos
-        │   ├── UsuarioController.java            # POST /api/login, GET /api/usuarios
-        │   └── PedidoController.java            # GET /api/pedidos, POST /api/pedidos
-        ├── dto/
-        │   ├── LoginRequest.java                 # DTO para POST /api/login
-        │   └── ProductoRequest.java              # DTO para POST /api/productos
-        ├── model/
-        │   ├── enums/
-        │   │   ├── EnumRol.java                  # CLIENTE, OFICINA, ADMINISTRADOR
-        │   │   └── EnumCategoria.java            # PERIFERICOS, COMPONENTES, REDES, SOFTWARE
-        │   ├── Jsonable.java                     # Interfaz de serialización JSON
-        │   ├── Producto.java
-        │   ├── Usuario.java
-        │   └── Pedido.java
-        └── repository/
-            ├── ProductoRepository.java           # Stored procedures + guardarProducto()
-            ├── UsuarioRepository.java            # Login con BCrypt
-            └── PedidoRepository.java            # Transacciones con rollback automático
+backend - technova/
+├── src/
+│   ├── main/
+│   │   ├── java/com/grupo3/technova/
+│   │   │   ├── config/
+│   │   │   │   └── CorsConfig.java
+│   │   │   ├── controller/
+│   │   │   │   ├── ProductoController.java
+│   │   │   │   ├── UsuarioController.java
+│   │   │   │   └── PedidoController.java
+│   │   │   ├── dto/
+│   │   │   │   ├── LoginRequest.java
+│   │   │   │   ├── ProductoRequest.java
+│   │   │   │   └── PedidoRequest.java
+│   │   │   ├── model/
+│   │   │   │   ├── enums/
+│   │   │   │   │   ├── EnumRol.java
+│   │   │   │   │   └── EnumCategoria.java
+│   │   │   │   ├── Jsonable.java
+│   │   │   │   ├── Producto.java
+│   │   │   │   ├── Usuario.java
+│   │   │   │   └── Pedido.java
+│   │   │   ├── repository/
+│   │   │   │   ├── ProductoRepository.java
+│   │   │   │   ├── UsuarioRepository.java
+│   │   │   │   └── PedidoRepository.java
+│   │   │   └── DemoApplication.java
+│   │   └── resources/
+│   │       ├── application.properties
+│   │       └── static/imagenes/
+│   └── test/
+├── pom.xml
+└── mvnw
 
-sql/
-├── db_technova.sql                              # Esquema + datos de prueba
-└── procedures_technova.sql                      # Procedimientos almacenados
+frontend - technova/
+└── src/
+    ├── index.html
+    ├── tienda.html
+    ├── css/
+    │   └── styles.css
+    ├── js/
+    │   ├── app.js
+    │   └── home.js
+    └── images/
+
+sql - technova/
+├── db_technova.sql
+└── procedures_technova.sql
 ```
 
 ---
@@ -154,13 +176,14 @@ sql/
 - Java 21
 - MySQL 8.0
 - Maven
+- VS Code con extensión Live Server (para el frontend)
 
 ### Pasos
 
 **1. Clona el repositorio**
 ```bash
-git clone https://github.com/tuusuario/technova-backend.git
-cd technova-backend
+git clone https://github.com/euhoho/technova-by-euhoho.git
+cd technova-by-euhoho
 ```
 
 **2. Crea la base de datos**
@@ -173,7 +196,7 @@ Ejecuta en MySQL en este orden:
 
 **3. Configura la conexión**
 
-Edita `src/main/resources/application.properties`:
+Edita `backend - technova/src/main/resources/application.properties`:
 ```properties
 spring.datasource.url=jdbc:mysql://localhost:3306/db_technova
 spring.datasource.username=TU_USUARIO
@@ -182,6 +205,7 @@ spring.datasource.password=TU_PASSWORD
 
 **4. Arranca el servidor**
 ```bash
+cd backend\ -\ technova
 mvn spring-boot:run
 ```
 
@@ -192,6 +216,10 @@ Conexión a MySQL establecida correctamente
 
 La API estará disponible en `http://localhost:8080`
 
+**5. Abre el frontend**
+
+Abre `frontend - technova/src/index.html` con Live Server desde VS Code. La tienda estará disponible en `http://127.0.0.1:5500`
+
 ---
 
 ## Características técnicas destacadas
@@ -199,9 +227,12 @@ La API estará disponible en `http://localhost:8080`
 - **Transacciones completas** en la creación de pedidos — si algo falla, se hace rollback automático y la BD queda intacta
 - **Bloqueo FOR UPDATE** para evitar condiciones de carrera al comprar el mismo producto simultáneamente
 - **Stored procedures** para todas las consultas GET, sin SQL embebido en el código Java
-- **CORS configurado** para integración con cualquier frontend
+- **CORS configurado** para integración con el frontend
 - **Gson** para serialización JSON explícita, sin depender de la magia de Spring
 - **PreparedStatement** en todas las consultas (sin riesgo de SQL injection)
+- **Frontend dinámico** — ningún producto está escrito a mano en el HTML, todo se renderiza desde la API
+- **Filtrado en memoria** — los filtros por categoría y el buscador operan sin nuevas peticiones al servidor
+- **Sesión con sessionStorage** — el login persiste mientras el usuario no cierre el tab
 
 ---
 
@@ -233,16 +264,18 @@ La API estará disponible en `http://localhost:8080`
 - [x] Evidencias de acceso por rol
 
 #### Entregable 5 — Frontend
-- [ ] Frontend HTML/CSS/JS consumiendo la API
-- [ ] Catálogo de productos
-- [ ] Login desde interfaz
-- [ ] Creación y consulta de pedidos
+- [x] Frontend HTML/CSS/JS consumiendo la API
+- [x] Catálogo de productos dinámico con Bootstrap 5
+- [x] Filtrado por categoría y buscador en tiempo real
+- [x] Login desde interfaz con actualización de navbar
+- [x] Carrito de compra visual
+- [x] Modal de detalle de producto
 
 #### Entregable 6 — Integración y Seguridad
 - [ ] Validaciones de entrada
 - [ ] Control global de errores
 - [ ] Lógica de negocio completa integrada
-- [ ] Medidas básicas de seguridad
+- [ ] Creación y consulta de pedidos desde el frontend
 
 #### Entregable 7 — Preparación despliegue
 - [ ] Documento de requisitos técnicos
@@ -259,16 +292,16 @@ La API estará disponible en `http://localhost:8080`
 
 ## LICENCIA
 
-Distribuido bajo licencia MIT.  
+Distribuido bajo licencia MIT.
 Consulta el archivo `LICENSE` para más información.
 
 ---
 
 <div align="center">
   <sub>
-    <strong>TechNova</strong> — Aplicación web de tienda online · DAM/DAW 2025/2026  
+    <strong>TechNova</strong> — Aplicación web de tienda online · DAM/DAW 2025/2026
     <br>
-    Full-stack project (API REST + Frontend web)  
+    Full-stack project (API REST + Frontend web)
     <br>
     Made with ❤️ by <a href="https://github.com/euhoho">euhoho</a>
   </sub>
