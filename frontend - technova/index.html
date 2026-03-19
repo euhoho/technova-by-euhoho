@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechNova Store</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Fragment+Mono&display=swap" rel="stylesheet">
+    <!-- Satoshi -->
+    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet">
+    <!-- Estilos propios -->
+    <link rel="stylesheet" href="css/styles.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="images/logo2.png">
+</head>
+<body>
+
+    <!-- ======================== NAVBAR ======================== -->
+    <nav class="navbar navbar-expand-lg" id="navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <img src="images/logo.png" alt="TechNova" class="navbar-logo">
+            </a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navMenu">
+                <ul class="navbar-nav ms-auto align-items-center gap-2">
+
+                    <!-- Login (visible si NO hay sesión) -->
+                    <li class="nav-item" id="nav-login-item">
+                        <button class="btn btn-outline-dark btn-sm px-3"
+                                data-bs-toggle="modal" data-bs-target="#loginModal">
+                            Login
+                        </button>
+                    </li>
+
+                    <!-- Avatar con inicial (visible si HAY sesión) -->
+                    <li class="nav-item d-none" id="nav-user-item">
+                        <div class="nav-avatar-wrapper">
+                            <div class="nav-avatar">
+                                <span id="nav-avatar">J</span>
+                                <button class="nav-avatar-salir" id="btn-logout">SALIR</button>
+                            </div>
+                        </div>
+                    </li>
+
+                    <!-- Solo ADMINISTRADOR -->
+                    <li class="nav-item d-none" id="nav-admin-item">
+                        <a class="btn btn-dark btn-sm px-3" href="#">Panel Admin</a>
+                    </li>
+
+                    <!-- Carrito -->
+                    <li class="nav-item">
+                        <button class="btn-carrito" id="btn-carrito"
+                                data-bs-toggle="modal" data-bs-target="#carritoModal">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
+                                 stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+                            </svg>
+                            Carrito
+                            <span class="carrito-count d-none" id="carrito-count">0</span>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ======================== HERO ======================== -->
+    <section class="hero">
+        <div class="container">
+<p class="hero-label"></p>
+<h1 class="hero-title">Mejora tu estilo de vida con<br>productos de primera calidad.</h1>
+<div class="hero-bottom">
+    <p class="hero-sub">Mejora tu rutina diaria con nuestros productos premium cuidadosamente seleccionados y artículos especialmente elegidos.</p>
+    <a href="tienda.html" class="hero-cta">Descubrir todos los productos</a>
+</div>
+        </div>
+    </section>
+
+    <!-- ======================== DESTACADOS ======================== -->
+    <section class="featured-section">
+        <div class="container">
+            <div id="destacados-container"></div>
+            <div id="loading-spinner-home" class="text-center py-5">
+                <div class="spinner-border spinner-border-sm" role="status" style="color:#aaa;"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== CATEGORÍAS ======================== -->
+    <section class="cat-section">
+        <div class="container">
+
+            <div class="cat-header">
+                <h2 class="cat-title">Explorar por categorías</h2>
+                <p class="cat-sub">Descubre nuestra amplia gama de categorías adaptadas a tus necesidades.</p>
+            </div>
+
+            <div class="cat-bento">
+
+                <!-- Tarjeta grande izquierda: texto arriba, imagen desborda abajo -->
+                <div class="cat-card cat-card--large">
+                    <div class="cat-body cat-body--top">
+                        <h3 class="cat-name">Todos los productos</h3>
+                        <p class="cat-desc">Descubre infinitas posibilidades en nuestra tienda. Todo lo que necesitas en un solo lugar.</p>
+                        <a href="tienda.html" class="cat-btn">Ver todos los productos</a>
+                    </div>
+                    <div class="cat-img-overflow">
+                        <img src="images/cat-all.png" alt="Todos los productos">
+                    </div>
+                </div>
+
+                <!-- Columna derecha -->
+                <div class="cat-col">
+
+                    <!-- Displays: texto izquierda + imagen derecha -->
+                    <div class="cat-card cat-card--displays">
+                        <div class="cat-body cat-body--side">
+                            <h3 class="cat-name">Pantallas</h3>
+                            <p class="cat-desc">Claridad cristalina y visuales vibrantes.</p>
+                            <a href="tienda.html?categoria=PANTALLAS" class="cat-btn">Ver pantallas</a>
+                        </div>
+                        <div class="cat-img-side">
+                            <img src="images/cat-displays.png" alt="Pantallas">
+                        </div>
+                    </div>
+
+                    <!-- Auriculares + Móviles: solo imagen + botón pill -->
+                    <div class="cat-row">
+                        <div class="cat-card cat-card--small">
+                            <img src="images/cat-headphones.png" alt="Auriculares" class="cat-small-img">
+                            <a href="tienda.html?categoria=AURICULARES" class="cat-small-label">Ver auriculares</a>
+                        </div>
+                        <div class="cat-card cat-card--small">
+                            <img src="images/cat-phones.png" alt="Móviles" class="cat-small-img">
+                            <a href="tienda.html?categoria=MOVILES" class="cat-small-label">Ver móviles</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ======================== FOOTER ======================== -->
+    <footer class="site-footer">
+        <div class="container">
+            <div class="footer-grid">
+
+                <!-- Columna 1: Logo + descripción + redes -->
+                <div class="footer-col-brand">
+                    <div class="footer-logo">
+                        <img src="images/banner3.png" alt="TechNova" height="36">
+                    </div>
+                    <p class="footer-tagline">Venta de productos premium, diseñados<br> para mejorar su experiencia diaria.</p>
+                    <div class="footer-social">
+                        <!-- Facebook -->
+                        <a href="https://github.com/euhoho/technova-by-euhoho" target="_blank" rel="noopener" class="social-btn" aria-label="Facebook">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+                        </a>
+                        <!-- Instagram -->
+                        <a href="https://github.com/euhoho/technova-by-euhoho" target="_blank" rel="noopener" class="social-btn" aria-label="Instagram">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+                        </a>
+                        <!-- X / Twitter -->
+                        <a href="https://github.com/euhoho/technova-by-euhoho" target="_blank" rel="noopener" class="social-btn" aria-label="X">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://github.com/euhoho/technova-by-euhoho" target="_blank" rel="noopener" class="social-btn" aria-label="LinkedIn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Columna 2: Contacto -->
+                <div class="footer-col">
+                    <h6 class="footer-col-title">Contacto</h6>
+                    <ul class="footer-contact-list">
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Calle de Alcalá, 506<br>28022 Madrid, España
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.18 2 2 0 0 1 3.6 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.6a16 16 0 0 0 6 6l.96-.96a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 21.72 16z"/></svg>
+                            +34 910 49 47 47
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                            info@technovastore.es
+                        </li>
+                        <li>
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            Lun – Vie: 9:00 – 18:00
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Columna 3: Métodos de pago -->
+                <div class="footer-col">
+                    <h6 class="footer-col-title">Pagos seguros</h6>
+                    <p class="footer-payment-desc">Todas las transacciones están cifradas y protegidas.</p>
+                    <div class="footer-payment-badges">
+                        <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/visa.svg"       alt="Visa"       class="payment-icon">
+                        <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/mastercard.svg" alt="Mastercard" class="payment-icon">
+                        <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/amex.svg"       alt="Amex"       class="payment-icon">
+                    </div>
+                    <div class="footer-ssl">
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        Pago 100% seguro · SSL
+                    </div>
+                </div>
+
+                <!-- Columna 4: Mapa -->
+                <div class="footer-col-map">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3036.8540864862!2d-3.6509!3d40.4268!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd4228cfb8b6d7c5%3A0x1!2sCalle+de+Alcal%C3%A1%2C+506%2C+Madrid!5e0!3m2!1ses!2ses!4v1700000000000"
+                    width="100%"
+                    height="180"
+                    style="border:0; border-radius:12px;"
+                    allowfullscreen=""
+                    loading="lazy">
+                </iframe>
+                </div>
+
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- ======================== MODAL LOGIN (Tarea 5.4) ======================== -->
+    <div class="modal fade" id="loginModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content login-modal">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title login-title">Iniciar sesión</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body pt-2">
+                    <div id="login-error" class="login-error-msg d-none"></div>
+                    <div class="mb-3">
+                        <label class="form-label login-label">Email</label>
+                        <input type="email" class="form-control login-input"
+                               id="login-email" placeholder="tu@email.com" autocomplete="email">
+                    </div>
+                    <div class="mb-4">
+                        <label class="form-label login-label">Contraseña</label>
+                        <input type="password" class="form-control login-input"
+                               id="login-password" placeholder="••••••••" autocomplete="current-password">
+                    </div>
+                    <button class="btn btn-dark w-100 login-btn" id="btn-login">Entrar</button>
+                    <p class="login-demo-hint">
+                        Demo: <code>lorenzop@gmail.com</code> / <code>1234</code>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================== MODAL CARRITO ======================== -->
+    <div class="modal fade" id="carritoModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content login-modal">
+                <div class="modal-header border-0 pb-0">
+                    <h5 class="modal-title login-title">Carrito</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body" id="carrito-body">
+                    <p class="carrito-vacio">Tu carrito está vacío.</p>
+                </div>
+                <div class="modal-footer border-0 pt-0 justify-content-between align-items-center">
+                    <span class="carrito-total" id="carrito-total"></span>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast carrito -->
+    <div class="carrito-toast" id="carrito-toast">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+        <span id="carrito-toast-msg"></span>
+    </div>
+
+
+    <!-- ======================== MODAL DETALLE PRODUCTO ======================== -->
+    <div class="modal fade" id="detalleModal" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered modal-lg">
+            <div class="modal-content login-modal">
+                <div class="modal-header border-0 pb-0">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0">
+                    <div class="detalle-grid">
+
+                        <!-- Imagen grande -->
+                        <div class="detalle-img-wrapper">
+                            <img id="detalle-img" src="" alt="">
+                            <div id="detalle-img-fallback" class="card-img-fallback" style="display:none"></div>
+                            <span id="detalle-badge-agotado" class="badge-agotado d-none">Agotado</span>
+                            <span id="detalle-badge-poco-stock" class="badge-poco-stock d-none">¡Queda poco!</span>
+                        </div>
+
+                        <!-- Info -->
+                        <div class="detalle-info">
+                            <span id="detalle-categoria" class="detalle-categoria"></span>
+                            <h2 id="detalle-nombre" class="detalle-nombre"></h2>
+                            <p id="detalle-descripcion" class="detalle-descripcion"></p>
+
+                            <div class="detalle-fila">
+                                <span id="detalle-precio" class="detalle-precio"></span>
+                                <span id="detalle-stock" class="detalle-stock-texto"></span>
+                            </div>
+
+
+                            <div class="detalle-sku">SKU: <span id="detalle-sku"></span></div>
+                            <button id="detalle-btn-carrito" class="btn-anadir-carrito mt-3 w-100">
+                                + Añadir al carrito
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ======================== INTRO ANIMATION ======================== -->
+    <div id="intro-overlay">
+        <div id="intro-inner">
+            <img src="images/banner2.png" alt="TechNova" id="intro-logo">
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- App -->
+    <script src="js/home.js"></script>
+    <!-- Intro animation -->
+    <script>
+    (function(){
+        const overlay = document.getElementById('intro-overlay');
+        const logo    = document.getElementById('intro-logo');
+
+        // Solo mostrar la intro la primera vez en la sesión
+        if (sessionStorage.getItem('introShown')) {
+            overlay.remove();
+            return;
+        }
+        sessionStorage.setItem('introShown', '1');
+
+        document.body.style.overflow = 'hidden';
+
+        // 1) Logo entra volando desde lejos (scale pequeño → 1)
+        setTimeout(() => { logo.classList.add('visible'); }, 80);
+
+        // 2) En el pico del movimiento, lo disparamos hacia delante (blast)
+        setTimeout(() => { logo.classList.add('blast'); }, 680);
+
+        // 3) Overlay desaparece casi al mismo tiempo que el blast
+        setTimeout(() => { overlay.classList.add('exit'); }, 780);
+
+        // 4) Limpieza
+        overlay.addEventListener('transitionend', (e) => {
+            if (e.target === overlay && overlay.classList.contains('exit')) {
+                overlay.remove();
+                document.body.style.overflow = '';
+            }
+        });
+    })();
+    </script>
+</body>
+</html>
