@@ -68,14 +68,14 @@ INSERT INTO usuario (email, nombre, password, rol) VALUES
 ('anitaflores69@gmail.com',     'Anita Flores',        '$2a$10$WKf1IWsd//57vdE2Uc3Meu1jzECAtgdy2lkX54ZRSltvrgyaM5oR2', 'CLIENTE');
 
 INSERT INTO producto (sku, nombre, descripcion, precio, stock, categoria, imagen) VALUES
-('PAN-EDXG',   'Display XG',          'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.',         649.99, 20, 'PANTALLAS',   'DisplayXG.png'),
-('PAN-EDXE',   'Display XE',          'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.',            649.99, 15, 'PANTALLAS',   'DisplayXE.png'),
-('AUR-OR27N',  'Headphones or-27n',    'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.',   97.99, 50, 'AURICULARES', 'HeadphonesOR27N.png'),
-('AUR-Z23C',   'Headphones z-23c',     'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.',            149.99, 35, 'AURICULARES', 'HeadphonesZ23C.png'),
-('MOV-P15B',   'Phone 15 Black',       'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.',              799.99, 25, 'MOVILES',     'Phone15Black.png'),
-('MOV-P15R',   'Phone 15 Red',         'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.',              799.99, 25, 'MOVILES',     'Phone15Red.png'),
-('REL-SF3B',   'Watch SF 3 Black',     'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.',    319.99, 30, 'RELOJES',     'WatchSF3Black.png'),
-('REL-SF4O',   'Watch SF 4 Orange',    'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.', 349.99, 20, 'RELOJES',     'WatchSF4Orange.png');
+('MOV-P15B', 'Phone 15 Black', 'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.', 799.99, 25, 'MOVILES', 'Phone15Black.png'),
+('AUR-OR27N', 'Headphones or-27n', 'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.', 97.99, 4, 'AURICULARES', 'HeadphonesOR27N.png'),
+('REL-SF3B', 'Watch SF 3 Black', 'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.', 319.99, 30, 'RELOJES', 'WatchSF3Black.png'),
+('PAN-EDXG', 'Display XG', 'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.', 649.99, 20, 'PANTALLAS', 'DisplayXG.png'),
+('AUR-Z23C', 'Headphones z-23c', 'Ya sea que estés en movimiento o entrenando, estos auriculares están diseñados para seguir tu ritmo sin esfuerzo.', 149.99, 35, 'AURICULARES', 'HeadphonesZ23C.png'),
+('REL-SF4O', 'Watch SF 4 Orange', 'Mantente conectado, organizado y motivado con Watch. Conectividad total, seguimiento fitness, diseño elegante y funciones inteligentes, todo en un solo dispositivo.', 349.99, 20, 'RELOJES', 'WatchSF4Orange.png'),
+('PAN-EDXE', 'Display XE', 'Mejora tu espacio de trabajo con Display y lleva tu productividad a otro nivel.', 649.99, 0, 'PANTALLAS', 'DisplayXE.png'),
+('MOV-P15R', 'Phone 15 Red', 'Experimenta la cima de la tecnología y el diseño con Phone. Funciones integradas, pantalla impresionante y potente rendimiento redefinen lo que es posible en el mundo de los smartphones.', 799.99, 1, 'MOVILES', 'Phone15Red.png');
 
 -- pedido 1: 97.99 + 129.99 + 799.99 = 1027.97
 -- pedido 2: 649.99 + 319.99 = 969.98
