@@ -5,6 +5,7 @@
 
 /* — Variables — */
 :root {
+    color-scheme:   light;
     --bg:           #f7f7f7;
     --white:        #ffffff;
     --black:        #111111;
@@ -250,9 +251,9 @@ body {
 ═══════════════════════════════════════ */
 .card-producto {
     cursor: pointer;
-    background: var(--white);
-    border-radius: var(--radius-card);
-    overflow: hidden;
+    background: transparent;
+    border-radius: 0;
+    overflow: visible;
     transition: transform 0.22s ease;
 }
 .card-producto:hover {
@@ -264,7 +265,8 @@ body {
 .card-img-area {
     position: relative;
     width: 100%;
-    background: var(--gray-card);
+    background: #efefef;
+    border-radius: var(--radius-card);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -289,7 +291,8 @@ body {
     align-items: flex-start;
     justify-content: space-between;
     gap: 8px;
-    padding: 12px 14px 14px;
+    padding: 10px 2px 0;
+    background: transparent;
 }
 .card-nombre {
     font-family: var(--font-main);
@@ -387,9 +390,15 @@ body {
    FOOTER
 ═══════════════════════════════════════ */
 .site-footer {
-    background: var(--white);
-    border-top: 1px solid var(--gray-border);
-    padding: 56px 0 48px;
+    background: transparent;
+    border-top: none;
+    padding: 0 0 32px;
+}
+.footer-inner {
+    background: #efefef;
+    border-radius: 20px;
+    padding: 48px 40px 32px;
+    margin: 0 0 0;
 }
 .footer-grid {
     display: grid;
@@ -418,7 +427,7 @@ body {
 .footer-social { display: flex; gap: 8px; }
 .social-btn {
     width: 34px; height: 34px;
-    background: var(--gray-card);
+    background: #efefef;
     border: none;
     border-radius: 50%;
     display: flex; align-items: center; justify-content: center;
@@ -501,6 +510,7 @@ body {
     border: none;
     border-radius: 20px;
     box-shadow: 0 24px 60px rgba(0,0,0,0.12);
+    overflow: hidden;
 }
 .login-title {
     font-size: 1.1rem;
@@ -554,18 +564,25 @@ body {
 .detalle-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    min-height: 380px;
 }
 .detalle-img-wrapper {
     position: relative;
-    background: var(--gray-card);
+    background: #efefef;
     border-radius: 16px 0 0 16px;
     overflow: hidden;
-    min-height: 280px;
-    display: flex; align-items: center; justify-content: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    min-height: 340px;
+    align-self: stretch;
 }
 .detalle-img-wrapper img {
     width: 100%; height: 100%;
-    object-fit: cover;
+    object-fit: contain;
+    border-radius: 12px;
+    mix-blend-mode: darken;
 }
 .detalle-info {
     padding: 28px 24px;
@@ -669,7 +686,7 @@ body {
     display: flex; align-items: center; justify-content: center;
     transition: background 0.15s;
 }
-.carrito-item-controles button:hover { background: var(--gray-card); }
+.carrito-item-controles button:hover { background: #efefef; }
 .carrito-item-controles span {
     font-family: var(--font-mono);
     font-size: 0.82rem;
@@ -693,7 +710,7 @@ body {
     border-radius: 4px;
     transition: color 0.15s, background 0.15s;
 }
-.carrito-item-borrar:hover { color: var(--black); background: var(--gray-card); }
+.carrito-item-borrar:hover { color: var(--black); background: #efefef; }
 .carrito-total {
     font-family: var(--font-mono);
     font-size: 0.9rem;
@@ -756,7 +773,7 @@ body {
     position: fixed;
     inset: 0;
     z-index: 99999;
-    background: #f7f7f7;
+    background: #efefef;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -850,7 +867,7 @@ body {
 
 /* ── Tarjeta base ── */
 .cat-card {
-    background: var(--gray-card);
+    background: #efefef;
     border-radius: 18px;
     overflow: hidden;
     text-decoration: none;
@@ -883,6 +900,7 @@ body {
     object-fit: cover;
     object-position: top center;
     display: block;
+    mix-blend-mode: darken;
 }
 
 /* ── TARJETA DISPLAYS ──
@@ -904,29 +922,18 @@ body {
 .cat-img-side {
     width: 48%;
     flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 12px;
     overflow: hidden;
 }
 .cat-img-side img {
     width: 100%;
     height: 100%;
-    object-fit: contain;
+    object-fit: cover;
     display: block;
+    mix-blend-mode: darken;
 }
 
 /* ── TARJETAS PEQUEÑAS (Auriculares / Móviles) ──
-   Solo imagen centrada + badge nombre abajo-izq */
-.cat-card--small {
-    position: relative;
-    min-height: 190px;
-    background: var(--gray-card);
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-}
+   Solo imagen centrada + badge nombre abajo */
 /* ── Texto compartido ── */
 .cat-name {
     font-size: 1.05rem;
@@ -1003,7 +1010,6 @@ body {
 }
 .hero-cta:hover { background: var(--black); color: var(--white); }
 
-/* Tarjetas pequeñas: imagen grande + pill centrado abajo */
 .cat-card--small {
     position: relative;
     min-height: 220px;
@@ -1012,14 +1018,21 @@ body {
     align-items: center;
     justify-content: center;
     overflow: hidden;
+    background: #efefef;
+    cursor: pointer;
 }
 .cat-card--small .cat-small-img {
     width: 100%;
     height: 100%;
     position: absolute;
     inset: 0;
+    object-fit: cover;
+    mix-blend-mode: darken;
+}
+
+.cat-card--small .cat-small-img--contain {
     object-fit: contain;
-    padding: 14px;
+    padding: 1px;
 }
 .cat-card--small .cat-small-label {
     position: absolute;
@@ -1042,4 +1055,117 @@ body {
     background: var(--black);
     color: var(--white);
     border-color: var(--black);
+}
+/* Alertas globales */
+.alertas-globales-wrapper {
+    position: fixed;
+    top: 80px;
+    right: 1.5rem;
+    z-index: 9999;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    max-width: 380px;
+    width: calc(100vw - 3rem);
+}
+
+.alerta-tn {
+    font-family: var(--font-sans, 'Satoshi', sans-serif);
+    font-size: 0.88rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+    border: none;
+}
+
+/* Inputs inválidos */
+.login-input.is-invalid {
+    border-color: #dc3545 !important;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.15) !important;
+}
+
+/* Fix Bootstrap modal scrollbar jump */
+body.modal-open {
+    overflow: hidden !important;
+    padding-right: 0 !important;
+}
+
+.modal {
+    padding-right: 0 !important;
+}
+
+/* Responsive móvil */
+@media (max-width: 576px) {
+
+    /* Navbar */
+    .navbar-logo { height: 36px; }
+    .btn-carrito span:not(.carrito-count) { display: none; }
+
+    /* Hero */
+    .hero { padding: 32px 0 24px; }
+    .hero-title { font-size: 1.8rem; }
+    .hero-bottom { flex-direction: column; align-items: flex-start; gap: 16px; }
+    .hero-cta { width: 100%; text-align: center; }
+
+    /* Filtros */
+    .filtros-barra { flex-direction: column; align-items: flex-start; gap: 10px; }
+    .filtros-wrapper { gap: 6px; }
+    .filtro-pill { font-size: 0.76rem; padding: 5px 12px; }
+    .buscador-wrapper.activo { width: 100%; }
+
+    /* Modal detalle — apilado en móvil */
+    .detalle-grid { grid-template-columns: 1fr; }
+    .detalle-img-wrapper {
+        border-radius: 16px 16px 0 0;
+        min-height: 220px;
+        max-height: 260px;
+    }
+    .detalle-info { padding: 20px 18px 24px; gap: 8px; }
+    .detalle-nombre { font-size: 1.15rem; }
+    .detalle-precio { font-size: 1.1rem; }
+
+    /* Modal carrito — más cómodo en móvil */
+    .carrito-item { gap: 8px; }
+    .carrito-item-nombre { font-size: 0.8rem; }
+    .carrito-item-precio { min-width: 56px; font-size: 0.78rem; }
+    .carrito-total { font-size: 0.82rem; }
+
+    /* Modal genérico — ocupa más pantalla */
+    .modal-dialog { margin: 0.5rem; }
+    .login-modal { border-radius: 16px; }
+
+    /* Toast — más arriba del borde en móvil */
+    .carrito-toast { bottom: 16px; font-size: 0.78rem; }
+
+    /* Alertas globales */
+    .alertas-globales-wrapper {
+        top: auto;
+        bottom: 70px;
+        left: 1rem;
+        right: 1rem;
+        max-width: 100%;
+        width: auto;
+    }
+}
+
+/* Botón cerrar flotante en modal detalle */
+.detalle-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 10;
+    background: rgba(255,255,255,0.9);
+    border-radius: 50%;
+    width: 28px;
+    height: 28px;
+    backdrop-filter: blur(4px);
+    filter: none;
+    opacity: 1 !important;
+}
+
+.detalle-close {
+    --bs-btn-close-color: #000;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23000'%3e%3cpath d='M.293.293a1 1 0 0 1 1.414 0L8 6.586 14.293.293a1 1 0 1 1 1.414 1.414L9.414 8l6.293 6.293a1 1 0 0 1-1.414 1.414L8 9.414l-6.293 6.293a1 1 0 0 1-1.414-1.414L6.586 8 .293 1.707a1 1 0 0 1 0-1.414z'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 12px;
 }
