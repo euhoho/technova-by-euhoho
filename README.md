@@ -23,6 +23,14 @@ El objetivo final es una tienda completamente funcional con panel de administrac
 
 ---
 
+## VISTA PREVIA
+
+https://github.com/user-attachments/assets/48506096-eaf5-442e-b4d6-9a808b4a13d2
+
+*Próximamente*
+
+---
+
 ## STACK
 
 | Capa | Tecnología |
