@@ -236,9 +236,7 @@
                                id="login-password" placeholder="••••••••" autocomplete="current-password">
                     </div>
                     <button class="btn btn-dark w-100 login-btn" id="btn-login">Entrar</button>
-                    <p class="login-demo-hint">
-                        Demo: <code>lorenzop@gmail.com</code> / <code>1234</code>
-                    </p>
+
                 </div>
             </div>
         </div>
@@ -255,15 +253,25 @@
                 <div class="modal-body" id="carrito-body">
                     <p class="carrito-vacio">Tu carrito está vacío.</p>
                 </div>
-                <div class="modal-footer border-0 pt-0 justify-content-between align-items-center" id="carrito-footer">
-                    <span class="carrito-total" id="carrito-total"></span>
-                    <!-- Tarea 6.1: botón Comprar — llama a realizarCompra() -->
-                    <button id="btn-comprar"
-                            class="btn btn-dark btn-sm px-4"
-                            style="display:none"
-                            onclick="realizarCompra()">
-                        Comprar ahora
-                    </button>
+                <div class="modal-footer border-0 pt-0 flex-column align-items-stretch gap-2 px-3 pb-3" id="carrito-footer">
+                    <div class="carrito-pago-seguro" id="carrito-pago-seguro" style="display:none">
+                        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                        <span>Pago seguro · SSL</span>
+                        <div class="carrito-pago-icons">
+                            <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/visa.svg" alt="Visa">
+                            <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/mastercard.svg" alt="Mastercard">
+                            <img src="https://raw.githubusercontent.com/aaronfagan/svg-credit-card-payment-icons/main/flat-rounded/amex.svg" alt="Amex">
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="carrito-total" id="carrito-total"></span>
+                        <button id="btn-comprar"
+                                class="btn btn-dark btn-sm px-4"
+                                style="display:none"
+                                onclick="realizarCompra()">
+                            Comprar ahora
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>

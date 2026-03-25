@@ -1,24 +1,22 @@
 // =============================================================
-// home.js — TechNova Store · Página de inicio
+// home.js — TechNova Store · Página de inicio (index.html)
 // =============================================================
 
-const API_URL          = 'http://localhost:8080/api';
-const DESTACADOS_SKUS  = ['AUR-Z23C', 'REL-SF4O', 'PAN-EDXG'];
-
-let carrito = [];
+const API_URL         = 'http://localhost:8080/api';
+const DESTACADOS_SKUS = ['AUR-Z23C', 'REL-SF4O', 'PAN-EDXG'];
 
 // =============================================================
-// INICIO
+// ARRANQUE
 // =============================================================
 document.addEventListener('DOMContentLoaded', () => {
     iniciarNavbarScroll();
-    restaurarSesion();
+    restaurarSesion();   // muestra el nombre si ya estaba logueado
     iniciarLogin();
-    cargarDestacados();
+    cargarDestacados();  // carga los 3 productos ancla desde la API
 });
 
 // =============================================================
-// NAVBAR — ocultar al bajar, mostrar al subir
+// NAVBAR — se oculta al bajar y reaparece al subir
 // =============================================================
 function iniciarNavbarScroll() {
     const navbar = document.getElementById('navbar');
@@ -29,12 +27,8 @@ function iniciarNavbarScroll() {
         if (!ticking) {
             requestAnimationFrame(() => {
                 const y = window.scrollY;
-                navbar.classList.toggle('scrolled', y > 10);
-                if (y > lastY && y > 80) {
-                    navbar.classList.add('navbar-hidden');
-                } else {
-                    navbar.classList.remove('navbar-hidden');
-                }
+                navbar.classList.toggle('scrolled',      y > 10);
+                navbar.classList.toggle('navbar-hidden', y > lastY && y > 80);
                 lastY   = y;
                 ticking = false;
             });
@@ -44,7 +38,7 @@ function iniciarNavbarScroll() {
 }
 
 // =============================================================
-// SESIÓN — restaura si ya estaba logueado
+// SESIÓN — restaura nombre en la navbar si ya estaba logueado
 // =============================================================
 function restaurarSesion() {
     const nombre = sessionStorage.getItem('nombre');
@@ -55,7 +49,7 @@ function restaurarSesion() {
 function mostrarUsuarioEnNavbar(nombre, rol) {
     document.getElementById('nav-login-item').classList.add('d-none');
     document.getElementById('nav-user-item').classList.remove('d-none');
-    document.getElementById('nav-avatar').textContent = nombre;
+    document.getElementById('nav-avatar').textContent = nombre; // textContent → anti-XSS
 
     if (rol === 'ADMINISTRADOR') {
         document.getElementById('nav-admin-item').classList.remove('d-none');
@@ -78,12 +72,13 @@ async function cargarDestacados() {
 
         const destacados = DESTACADOS_SKUS
             .map(sku => todos.find(p => p.sku === sku))
-            .filter(Boolean);
+            .filter(Boolean); // descarta los SKUs que no existan en la API
 
-        if (destacados.length === 0) return;
+        if (!destacados.length) return;
 
         const iconos = { AURICULARES: '🎧', PANTALLAS: '🖥️', RELOJES: '⌚', MOVILES: '📱' };
 
+        // SEGURIDAD: usamos escapeHtml() para los datos del servidor → anti-XSS
         contenedor.innerHTML =
             '<div class="destacados-grid">' +
             destacados.map(p => `
@@ -92,16 +87,16 @@ async function cargarDestacados() {
                     <div class="card-img-area">
                         <span class="badge-featured">Featured</span>
                         <img src="http://localhost:8080/imagenes/${p.imagen}"
-                             alt="${p.nombre}"
+                             alt="${escapeHtml(p.nombre)}"
                              onerror="this.style.display='none';this.nextElementSibling.style.display='flex'">
                         <div class="card-img-fallback" style="display:none">
                             <span style="font-size:2.5rem">${iconos[p.categoria] || '📦'}</span>
                         </div>
-                        ${p.stock === 0 ? '<span class="badge-agotado">Agotado</span>' : ''}
+                        ${p.stock === 0               ? '<span class="badge-agotado">Agotado</span>'         : ''}
                         ${p.stock > 0 && p.stock <= 5 ? '<span class="badge-poco-stock">¡Queda poco!</span>' : ''}
                     </div>
                     <div class="card-info">
-                        <span class="card-nombre">${p.nombre}</span>
+                        <span class="card-nombre">${escapeHtml(p.nombre)}</span>
                         <span class="card-precio ${p.stock === 0 ? 'muted' : ''}">${formatearPrecio(p.precio)}</span>
                     </div>
                 </div>`
@@ -127,13 +122,16 @@ function iniciarLogin() {
     const btnLogout = document.getElementById('btn-logout');
 
     btnLogin.addEventListener('click', async () => {
-        const email    = document.getElementById('login-email').value.trim();
-        const password = document.getElementById('login-password').value;
-        const errorDiv = document.getElementById('login-error');
+        const emailInput    = document.getElementById('login-email');
+        const passwordInput = document.getElementById('login-password');
+        const email         = emailInput.value.trim();
+        const password      = passwordInput.value;
+        const errorDiv      = document.getElementById('login-error');
 
         errorDiv.classList.add('d-none');
         errorDiv.textContent = '';
 
+        // Validación: campos obligatorios
         if (!email || !password) {
             errorDiv.textContent = 'Rellena todos los campos.';
             errorDiv.classList.remove('d-none');
@@ -150,6 +148,14 @@ function iniciarLogin() {
                 body:    JSON.stringify({ email, password })
             });
 
+            // 401 = credenciales incorrectas
+            if (respuesta.status === 401) {
+                errorDiv.textContent = 'Credenciales incorrectas. Inténtalo de nuevo.';
+                errorDiv.classList.remove('d-none');
+                return;
+            }
+
+            // Cualquier otro error HTTP (500, etc.)
             if (!respuesta.ok) throw new Error(`HTTP ${respuesta.status}`);
 
             const datos = await respuesta.json();
@@ -162,7 +168,8 @@ function iniciarLogin() {
             mostrarUsuarioEnNavbar(datos.nombre || datos.email || email, datos.rol);
 
         } catch (error) {
-            errorDiv.textContent = 'Credenciales incorrectas. Inténtalo de nuevo.';
+            // Llegamos aquí si el servidor no responde (error de red)
+            errorDiv.textContent = 'No se pudo conectar con el servidor. Inténtalo de nuevo.';
             errorDiv.classList.remove('d-none');
             console.error('Error en login:', error);
         } finally {
@@ -178,7 +185,7 @@ function iniciarLogin() {
         });
     });
 
-    // Cerrar sesión
+    // Logout: borrar sesión y restaurar la navbar
     btnLogout.addEventListener('click', () => {
         sessionStorage.clear();
         document.getElementById('nav-user-item').classList.add('d-none');
@@ -190,8 +197,16 @@ function iniciarLogin() {
 // =============================================================
 // UTILIDADES
 // =============================================================
+
+// Formatea un número como precio en euros: 1234.5 → "1.234,50 €"
 function formatearPrecio(precio) {
-    return new Intl.NumberFormat('es-ES', {
-        style: 'currency', currency: 'EUR'
-    }).format(precio);
+    return new Intl.NumberFormat('es-ES', { style: 'currency', currency: 'EUR' }).format(precio);
+}
+
+// Previene XSS: convierte caracteres peligrosos (<, >, ", &) en entidades HTML.
+// Úsala siempre que insertes datos del servidor dentro de HTML.
+function escapeHtml(texto) {
+    const div = document.createElement('div');
+    div.appendChild(document.createTextNode(String(texto)));
+    return div.innerHTML;
 }

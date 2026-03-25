@@ -1169,3 +1169,41 @@ body.modal-open {
     background-position: center;
     background-size: 12px;
 }
+
+/* Miniatura producto en carrito */
+.carrito-item-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background: #efefef;
+    flex-shrink: 0;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.carrito-item-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    padding: 4px;
+    mix-blend-mode: darken;
+}
+
+/* Franja pago seguro */
+.carrito-pago-seguro {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.75rem;
+    color: var(--gray-text);
+    padding: 8px 0 4px;
+    border-top: 1px solid var(--gray-border);
+}
+.carrito-pago-seguro span { flex: 1; }
+.carrito-pago-icons {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+.carrito-pago-icons img { height: 18px; width: auto; }
