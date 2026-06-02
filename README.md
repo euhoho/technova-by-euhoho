@@ -7,7 +7,7 @@
 ![MySQL](https://img.shields.io/badge/MySQL-8.0-blue?style=flat-square&logo=mysql)
 ![Gson](https://img.shields.io/badge/Gson-2.10.1-yellow?style=flat-square)
 ![Bootstrap](https://img.shields.io/badge/Bootstrap-5.3-purple?style=flat-square&logo=bootstrap)
-![Estado](https://img.shields.io/badge/Estado-En%20desarrollo-orange?style=flat-square)
+![Estado](https://img.shields.io/badge/Estado-Terminado-green?style=flat-square)
 
 </div>
 
@@ -27,8 +27,6 @@ El objetivo final es una tienda completamente funcional con panel de administrac
 
 https://github.com/user-attachments/assets/48506096-eaf5-442e-b4d6-9a808b4a13d2
 
-*Próximamente*
-
 ---
 
 ## STACK
@@ -45,7 +43,6 @@ https://github.com/user-attachments/assets/48506096-eaf5-442e-b4d6-9a808b4a13d2
 ---
 
 ## ESTRUCTURA
-##### *(actualizada en entrega 5)*
 ```
 backend - technova/
 ├── src/
@@ -280,21 +277,21 @@ Abre `frontend - technova/src/index.html` con Live Server desde VS Code. La tien
 - [x] Modal de detalle de producto
 
 #### Entregable 6 — Integración y Seguridad
-- [ ] Validaciones de entrada
-- [ ] Control global de errores
-- [ ] Lógica de negocio completa integrada
-- [ ] Creación y consulta de pedidos desde el frontend
+- [x] Validaciones de entrada
+- [x] Control global de errores
+- [x] Lógica de negocio completa integrada
+- [x] Creación y consulta de pedidos desde el frontend
 
 #### Entregable 7 — Preparación despliegue
-- [ ] Documento de requisitos técnicos
-- [ ] Guía de instalación
-- [ ] Checklist post-despliegue
+- [x] Documento de requisitos técnicos
+- [x] Guía de instalación
+- [x] Checklist post-despliegue
 
 #### Entregable 8 — Cierre
-- [ ] Pruebas finales
-- [ ] Memoria técnica
-- [ ] Manual de uso
-- [ ] Aplicación estable para defensa
+- [x] Pruebas finales
+- [x] Memoria técnica
+- [x] Manual de uso
+- [x] Aplicación estable para defensa
 
 ---
 
